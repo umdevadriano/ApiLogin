@@ -33,10 +33,11 @@ app.post('/login', (req, res) => {
   
     firebaseAuth.signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        res.json(userCredential)
+        res.json(userCredential.user)
+       
       })
       .catch((error) => {
-        res.json(error)
+        res.status(400).json("usuario não cadastrado")
       });
   });
 app.post('/', async (req, res) => {
